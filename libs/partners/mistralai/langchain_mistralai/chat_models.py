@@ -761,7 +761,7 @@ class ChatMistralAI(BaseChatModel):
         vary by model.
         """
         try:
-            import tiktoken  # noqa: PLC0415
+            import tiktoken
         except ImportError:
             return super().get_num_tokens_from_messages(messages, tools=tools)
 
@@ -776,7 +776,7 @@ class ChatMistralAI(BaseChatModel):
                     tool_schema = convert_to_openai_tool(tool)
                     schema_str = json.dumps(tool_schema)
                     total += len(encoding.encode(schema_str)) + 3
-                except Exception:  # noqa: BLE001
+                except Exception:
                     total += 100
         return total
 
