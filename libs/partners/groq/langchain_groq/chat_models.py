@@ -5,9 +5,8 @@ from __future__ import annotations
 import json
 import warnings
 from collections.abc import AsyncIterator, Callable, Iterator, Mapping, Sequence
-from typing import NoReturn
 from operator import itemgetter
-from typing import Any, Literal, cast
+from typing import Any, Literal, NoReturn, cast
 
 import groq
 from langchain_core.callbacks import (
@@ -832,7 +831,7 @@ class ChatGroq(BaseChatModel):
                     tool_schema = convert_to_openai_tool(tool)
                     schema_str = json.dumps(tool_schema)
                     total += len(encoding.encode(schema_str)) + 3
-                except Exception:  # noqa: BLE001
+                except Exception:
                     total += 100
         return total
 
